@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        
+        <title> Hi</title>
+    </head>
+    <body>
+    <div><button>Search</button></div>
+    <div><img id="greatphoto"></div>    
+    <input type="text"/>
+    
+    <script type="text/javascript">
+    
+    $( document ).ready(function() {
+        replacegify();
+       $("button").click(function(){
+           var value =$("input").val() 
+                 replacegify(value);
+       })
+    });
+    
+    function replacegify(value) {
+         $.get( "https://api.giphy.com/v1/gifs/translate?s="+value+"&api_key=dc6zaTOxFJmzC", function( response ) {
+            console.log(response["data"]["images"]["downsized"]["url"]);
+            $( "#greatphoto" ).attr( "src", response["data"]["images"]["downsized"]["url"] );
+            // console.log(response.data.images);
+            // console.log(        (((response)["data"])["images"])        )
+            // 5 * ((7*(3+8))*2) 
+        });
+    }
+    
+    </script>
+    </body>
+</html>
